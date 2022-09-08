@@ -5,9 +5,9 @@ CfhighlanderTemplate do
     ComponentParam 'RecordName'
     ComponentParam 'AliasDNSName', ''
     ComponentParam 'AliasHostedZoneId', ''
-    ComponentParam 'Type', ''
+    ComponentParam 'Type', 'CNAME', allowedValues: ['A','AAAA','CAA','CNAME','DS', 'MX','NAPTR','NS','PTR','SOA','SPF','SRV','TXT']
     ComponentParam 'TTL', '60'
-    ComponentParam 'ResourceRecords', ''
+    ComponentParam 'ResourceRecords', '', type: 'CommaDelimitedList'
   end
   
   end

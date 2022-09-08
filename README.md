@@ -15,12 +15,37 @@ kurgan add route53-recordset
 
 | Name | Use | Default | Global | Type | Allowed Values |
 | ---- | --- | ------- | ------ | ---- | -------------- |
-| EnvironmentName | Tagging | dev | true | string
-| EnvironmentType | Tagging | development | true | string | ['development','production']
+| HostedZoneName | Hosted Zone for the record | None | false | string
+| RecordName | the name of the record | None | false | string
+| AliasDNSName | target alias DNS Name | None | false | string
+| AliasHostedZoneId | target aliases HostedZone Id | None | false | string
+| Type | DNS Record Type | CNAME | false | string | 'A','AAAA','CAA','CNAME','DS', 'MX','NAPTR','NS','PTR','SOA','SPF','SRV','TXT'
+| TTL | TTL of the record | 60 | false | string
+| ResourceRecords | Comma seperate string of target records | None | false | CommaDelimitedList
+
+
 
 ## Configuration
 
-TODO: Add configuration examples
+### Alias Target Recordset
+
+To define a record as an Alias define the following config
+
+```yaml
+alias_target: true
+```
+
+You could also define this as an inlined config like
+
+```
+  Component template: 'route53-recordset@0.1.0', name: 'myalias', config: { alias_target: true } do
+    parameter name: 'HostedZoneName', value: FnSub("${EnvironmentName}.${DnsDomain}")
+    parameter name: 'RecordName', value: FnSub("${EnvironmentName}.${DnsDomain}")
+    parameter name: 'AliasDNSName', value: cfout('alb.LoadBalancerDNSName')
+    parameter name: 'AliasHostedZoneId', value: cfout('alb.LoadBalancerCanonicalHostedZoneID')
+  end
+
+```
 
 **Other Config Options**
 
