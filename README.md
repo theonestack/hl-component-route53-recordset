@@ -37,7 +37,7 @@ alias_target: true
 
 You could also define this as an inlined config like
 
-```
+```ruby
   Component template: 'route53-recordset@0.1.0', name: 'myalias', config: { alias_target: true } do
     parameter name: 'HostedZoneName', value: FnSub("${EnvironmentName}.${DnsDomain}")
     parameter name: 'RecordName', value: FnSub("${EnvironmentName}.${DnsDomain}")
