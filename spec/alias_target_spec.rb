@@ -4,11 +4,11 @@ describe 'compiled component route53-recordset' do
   
   context 'cftest' do
     it 'compiles test' do
-      expect(system("cfhighlander cftest #{@validate} --tests tests/default.test.yaml")).to be_truthy
+      expect(system("cfhighlander cftest #{@validate} --tests tests/alias_target.test.yaml")).to be_truthy
     end      
   end
   
-  let(:template) { YAML.load_file("#{File.dirname(__FILE__)}/../out/tests/default/route53-recordset.compiled.yaml") }
+  let(:template) { YAML.load_file("#{File.dirname(__FILE__)}/../out/tests/alias_target/route53-recordset.compiled.yaml") }
 
   context "Parameters" do
     let(:parameters) { template["Parameters"] }
@@ -29,9 +29,11 @@ describe 'compiled component route53-recordset' do
       expect(resources["RecordSet"]['Properties']).to eq({
         "HostedZoneName" => {"Ref"=>"HostedZoneName"},
         "Name" => {"Ref"=>"RecordName"},
-        "ResourceRecords" => {"Fn::Split"=>[",", {"Ref"=>"ResourceRecords"}]},
-        "TTL" => {"Ref"=>"TTL"},
-        "Type" => {"Ref"=>"Type"},
+        "Type" => "A",
+        "AliasTarget" => {
+          "DNSName" => {"Ref"=>"AliasDNSName"},
+          "HostedZoneId" => {"Ref"=>"AliasHostedZoneId"},
+        },
       })
   end
   end

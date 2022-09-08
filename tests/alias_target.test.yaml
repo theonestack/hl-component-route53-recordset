@@ -1,0 +1,6 @@
+test_metadata:
+  type: config
+  name: alias_target
+  description: tests an alias target recordset
+
+alias_target: true

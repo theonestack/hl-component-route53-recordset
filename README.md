@@ -1,13 +1,12 @@
 # my-component CfHighlander Component
 
-![cftest](https://github.com/theonestack/hl-component-my-component/actions/workflows/rspec.yaml/badge.svg)
+![cftest](https://github.com/theonestack/hl-route53-recordset/actions/workflows/rspec.yaml/badge.svg)
 
-**_NOTE:_**  Rename and replace my-component with the name of your component
 
-TODO: Add Description
+Creates a Route53 Recordset within a given HostedZone
 
 ```bash
-kurgan add my-component
+kurgan add route53-recordset
 ```
 
 ## Requirements
