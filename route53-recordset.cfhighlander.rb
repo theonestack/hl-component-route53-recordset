@@ -1,8 +1,6 @@
 CfhighlanderTemplate do
   
   Parameters do
-    ComponentParam 'EnvironmentName', 'dev', isGlobal: true
-    ComponentParam 'EnvironmentType', 'development', allowedValues: ['development','production'], isGlobal: true
     ComponentParam 'HostedZoneName'
     ComponentParam 'RecordName'
     ComponentParam 'AliasDNSName', ''

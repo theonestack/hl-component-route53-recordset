@@ -13,9 +13,9 @@ describe 'compiled component route53-recordset' do
   context "Parameters" do
     let(:parameters) { template["Parameters"] }
 
-    it "has EnvironmentName parameter" do
-        expect(parameters["EnvironmentName"]).to eq({
-          "Default" => "dev",
+    it "has HostedZoneName parameter" do
+        expect(parameters["HostedZoneName"]).to eq({
+          "Default" => "",
           "NoEcho" => false,
           "Type" => "String",
         })

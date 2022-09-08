@@ -10,18 +10,6 @@ describe 'compiled component route53-recordset' do
   
   let(:template) { YAML.load_file("#{File.dirname(__FILE__)}/../out/tests/alias_target/route53-recordset.compiled.yaml") }
 
-  context "Parameters" do
-    let(:parameters) { template["Parameters"] }
-
-    it "has EnvironmentName parameter" do
-        expect(parameters["EnvironmentName"]).to eq({
-          "Default" => "dev",
-          "NoEcho" => false,
-          "Type" => "String",
-        })
-    end
-  end
-
   context "Resources" do
     let(:resources) { template["Resources"] }
 
