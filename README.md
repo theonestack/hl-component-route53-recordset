@@ -1,6 +1,6 @@
-# my-component CfHighlander Component
+# oute53-recordse CfHighlander Component
 
-![cftest](https://github.com/theonestack/hl-route53-recordset/actions/workflows/rspec.yaml/badge.svg)
+![cftest](https://github.com/theonestack/hl-component-route53-recordset/actions/workflows/rspec.yaml/badge.svg)
 
 
 Creates a Route53 Recordset within a given HostedZone
