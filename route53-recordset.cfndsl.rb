@@ -4,7 +4,7 @@ CloudFormation do
 
   if alias_target == true
     Route53_RecordSet(:RecordSet) do
-      HostedZoneName Ref(:HostedZoneName)
+      HostedZoneName FnJoin('', [Ref(:HostedZoneName),'.'])
       Name Ref(:RecordName)
       Type 'A'
       AliasTarget do
@@ -14,7 +14,7 @@ CloudFormation do
     end
   else
     Route53_RecordSet(:RecordSet) do
-      HostedZoneName Ref(:HostedZoneName)
+      HostedZoneName FnJoin('', [Ref(:HostedZoneName),'.'])
       Name Ref(:RecordName)
       Type Ref(:Type)
       TTL Ref(:TTL)
